@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Profile</title>
+  <script>
+    function loadDetails() {
+      const name = localStorage.getItem("name");
+      const number = localStorage.getItem("number");
+      const email = localStorage.getItem("email");
+      const dob = localStorage.getItem("dob");
+
+      if (name && number && email && dob) {
+        document.getElementById("profileName").textContent = name;
+        document.getElementById("profileNumber").textContent = number;
+        document.getElementById("profileEmail").textContent = email;
+        document.getElementById("profileDob").textContent = dob;
+      } else {
+        document.getElementById("profileDetails").innerHTML =
+          "<p>No details available. Please fill in your information on the User Info Page.</p>";
+      }
+    }
+
+    function redirectToUserInfo() {
+      window.location.href = "user-info.html";
+    }
+
+    function redirectToLogin() {
+      window.location.href = "index.html";
+    }
+  </script>
+</head>
+<body onload="loadDetails()">
+  <h1>Personal Profile</h1>
+  <div id="profileDetails">
+    <p><strong>Name:</strong> <span id="profileName"></span></p>
+    <p><strong>Phone Number:</strong> <span id="profileNumber"></span></p>
+    <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+    <p><strong>Date of Birth:</strong> <span id="profileDob"></span></p>
+  </div>
+
+  <button onclick="redirectToUserInfo()">Edit Details</button>
+  <button onclick="redirectToLogin()">Logout</button>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Information Page</title>
+  <script>
+    function saveDetails() {
+      const name = document.getElementById("name").value;
+      const number = document.getElementById("number").value;
+      const email = document.getElementById("email").value;
+      const dob = document.getElementById("dob").value;
+
+      if (!name || !number || !email || !dob) {
+        alert("Please fill in all the details.");
+        return;
+      }
+
+      // Save details to localStorage
+      localStorage.setItem("name", name);
+      localStorage.setItem("number", number);
+      localStorage.setItem("email", email);
+      localStorage.setItem("dob", dob);
+
+      alert("Details saved successfully!");
+      window.location.href = "profile.html"; // Redirect to profile page
+    }
+  </script>
+</head>
+<body>
+  <h1>User Information</h1>
+  <form onsubmit="event.preventDefault(); saveDetails();">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="number">Phone Number:</label><br>
+    <input type="tel" id="number" name="number" required pattern="[0-9]{10}"><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="dob">Date of Birth:</label><br>
+    <input type="date" id="dob" name="dob" required><br><br>
+
+    <button type="submit">Save and Go to Profile</button>
+  </form>
+  <button onclick="redirectToLogin()">Logout</button>
+
+  <script>
+    function redirectToLogin() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
